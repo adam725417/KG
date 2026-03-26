@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 全域基礎 ─────────────────────────────────────── */
+:root {
+  --bg-main:    #eef3fc;
+  --bg-card:    #ffffff;
+  --bg-sidebar: #1a2744;
+  --text-main:  #0f172a;
+  --border:     #d1ddf5;
+  --accent:     #2563eb;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 捲軸 ─────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #e8f0fe; }
+::-webkit-scrollbar-thumb { background: #b8ccf0; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+
+/* ── SVG 邊線動畫（虛線流動）────────────────────────── */
+.edge-path {
+  stroke-dasharray: 6 4;
+  animation: dashFlow 1.2s linear infinite;
+}
+@keyframes dashFlow {
+  to { stroke-dashoffset: -20; }
+}
+
+/* ── 節點脈動 ─────────────────────────────────────── */
+.node-pulse {
+  animation: nodePulse 2s ease-in-out infinite;
+}
+@keyframes nodePulse {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.4)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(37, 99, 235, 0.9)); }
+}
+
+/* ── 邊線生長動畫 ─────────────────────────────────── */
+.edge-grow {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: edgeGrow 0.7s ease-out forwards;
+}
+@keyframes edgeGrow {
+  to { stroke-dashoffset: 0; }
+}
+
+/* ── 卡片淡入 ─────────────────────────────────────── */
+.card-appear {
+  animation: fadeUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+.card-appear.delay-1 { animation-delay: 0.15s; }
+.card-appear.delay-2 { animation-delay: 0.30s; }
+.card-appear.delay-3 { animation-delay: 0.45s; }
+.card-appear.delay-4 { animation-delay: 0.60s; }
+.card-appear.delay-5 { animation-delay: 0.75s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 衝突光圈動畫 ─────────────────────────────────── */
+.conflict-ring {
+  animation: conflictRing 1s ease-in-out infinite;
+}
+@keyframes conflictRing {
+  0%, 100% { r: 30; opacity: 0.5; }
+  50%       { r: 36; opacity: 0.9; }
+}
+
+/* ── 高亮閃爍 ─────────────────────────────────────── */
+.highlight-glow {
+  animation: highlightGlow 1.5s ease-in-out infinite;
+}
+@keyframes highlightGlow {
+  0%, 100% { opacity: 0.9; }
+  50%       { opacity: 1; filter: brightness(1.2); }
+}
+
+/* ── Cypher 程式碼區塊 ────────────────────────────── */
+.cypher-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.7;
+  background: #1e2d4a;
+  color: #a5b4fc;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #2d4070;
+}
+
+/* ── 玻璃卡片效果 ─────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid #d1ddf5;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(37, 99, 235, 0.08);
+}
+
+/* ── 教師模式邊框 ─────────────────────────────────── */
+.teacher-border {
+  border: 2px solid #7c3aed !important;
+}
+
+/* ── 進度條過渡 ───────────────────────────────────── */
+.progress-fill {
+  transition: width 0.4s ease-out;
+}
+
+/* ── SVG 格線背景（淺色版）──────────────────────────── */
+.svg-grid-light rect {
+  fill: none;
+  stroke: #d1ddf5;
+  stroke-width: 0.5;
+}
